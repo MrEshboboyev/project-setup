@@ -1,3 +1,9 @@
-var builder = DistributedApplication.CreateBuilder(args);
+IDistributedApplicationBuilder builder = DistributedApplication.CreateBuilder(args);
 
-builder.Build().Run();
+IResourceBuilder<PostgresServerResource> postgres = builder.AddPostgres("postgres");
+
+builder.AddProject<Projects.Web_Api>("web-api")
+    .WithReference(postgres)
+    .WaitFor(postgres);
+
+await builder.Build().RunAsync();

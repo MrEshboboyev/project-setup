@@ -1,0 +1,17 @@
+services:
+  web.api:
+    image: ${DOCKER_REGISTRY-}webapi
+    build:
+      context: .
+      dockerfile: Web.Api/Dockerfile
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: demodatabase
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.containers/postgres-data:/var/lib/postgresql/data

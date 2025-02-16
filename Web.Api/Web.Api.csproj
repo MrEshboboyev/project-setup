@@ -2,18 +2,25 @@
 
     <PropertyGroup>
       <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+      <UserSecretsId>fd5c40d0-eaf3-4c73-96a4-2ffdc70ae3c0</UserSecretsId>
+      <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
         <PackageReference Include="Microsoft.Extensions.Http.Resilience" />
         <PackageReference Include="Microsoft.Extensions.Resilience" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ProjectSetup.ServiceDefaults\ProjectSetup.ServiceDefaults.csproj" />
     </ItemGroup>
 
 </Project>
