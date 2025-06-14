@@ -1,17 +1,37 @@
 services:
-  web.api:
-    image: ${DOCKER_REGISTRY-}webapi
+  webapi:
+    container_name: web-api
     build:
       context: .
       dockerfile: Web.Api/Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Default: Host=postgres;Port=5432;Database=AppDb;Username=postgres;Password=postgres
+    depends_on:
+      - postgres
+    networks:
+      - app-network
 
   postgres:
+    container_name: postgres-db
     image: postgres:latest
+    restart: unless-stopped
     environment:
-      POSTGRES_USER: demodatabase
+      POSTGRES_DB: AppDb
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
-      - ./.containers/postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  postgres-data:
+
+networks:
+  app-network:
+    driver: bridge
