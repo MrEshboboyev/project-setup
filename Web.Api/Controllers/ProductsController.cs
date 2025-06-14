@@ -46,7 +46,7 @@ internal sealed class ProductsController(
         await dbContext.Products.AddAsync(product);
         await dbContext.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetByIdAsync), new { id = product.Id }, product);
+        return Ok(product);
     }
 
     [HttpPut("{id:int}")]

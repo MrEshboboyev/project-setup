@@ -2,12 +2,17 @@ using Microsoft.EntityFrameworkCore;
 using Web.Api.Data;
 using Web.Api.Data.Seeders;
 using Web.Api.Date;
+using Web.Api.Infrastructure;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // 🔧 Add services
 builder.AddServiceDefaults();
-builder.Services.AddControllers();
+builder.Services
+    .AddControllers()
+    .ConfigureApplicationPartManager(manager 
+        => manager.FeatureProviders.Add(new InternalControllerFeatureProvider()));
+
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Database")));
