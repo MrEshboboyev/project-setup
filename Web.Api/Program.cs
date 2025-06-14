@@ -1,13 +1,13 @@
+using Contracts.Data;
+using Contracts.Data.Seeders;
+using Contracts.Date;
 using Microsoft.EntityFrameworkCore;
 using Web.Api.Data;
-using Web.Api.Data.Seeders;
-using Web.Api.Date;
 using Web.Api.Infrastructure;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // 🔧 Add services
-builder.AddServiceDefaults();
 builder.Services
     .AddControllers()
     .ConfigureApplicationPartManager(manager 
@@ -24,9 +24,6 @@ builder.Services.AddSingleton<IDateTimeProvider, SystemDateTimeProvider>();
 builder.Services.AddSingleton<IDateTimeFaker, DateTimeFaker>();
 
 WebApplication app = builder.Build();
-
-// 🌐 Configure endpoints & middleware
-app.MapDefaultEndpoints();
 
 if (app.Environment.IsDevelopment())
 {

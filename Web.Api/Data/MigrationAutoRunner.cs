@@ -1,3 +1,4 @@
+using Contracts.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Web.Api.Data;

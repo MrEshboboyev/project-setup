@@ -1,8 +1,8 @@
 using Bogus;
 
-namespace Web.Api.Date;
+namespace Contracts.Date;
 
-internal sealed class DateTimeFaker(IDateTimeProvider clock) : IDateTimeFaker
+public sealed class DateTimeFaker(IDateTimeProvider clock) : IDateTimeFaker
 {
     private readonly Faker _faker = new();
 

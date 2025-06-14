@@ -1,11 +1,12 @@
 using Bogus;
+using Contracts.Date;
+using Contracts.Entities;
 using Microsoft.EntityFrameworkCore;
-using Web.Api.Date;
-using Web.Api.Entities;
+using Microsoft.Extensions.Logging;
 
-namespace Web.Api.Data.Seeders;
+namespace Contracts.Data.Seeders;
 
-internal sealed class ProductSeeder(
+public sealed class ProductSeeder(
     AppDbContext context, 
     ILogger<ProductSeeder> logger,
     IDateTimeFaker dateTimeFaker)

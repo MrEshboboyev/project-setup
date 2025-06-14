@@ -1,6 +1,6 @@
-namespace Web.Api.Date;
+namespace Contracts.Date;
 
-internal interface IDateTimeFaker
+public interface IDateTimeFaker
 {
     DateTime UtcPast(int years = 1);
     DateTime UtcFuture(int years = 1);

@@ -1,6 +1,8 @@
-namespace Web.Api.Data.Seeders;
+using Microsoft.Extensions.Logging;
 
-internal sealed class SeederOrchestrator(
+namespace Contracts.Data.Seeders;
+
+public sealed class SeederOrchestrator(
     IEnumerable<ISeeder> seeders,
     ILogger<SeederOrchestrator> logger)
 {

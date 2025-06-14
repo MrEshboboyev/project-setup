@@ -1,7 +1,7 @@
+using Contracts.Data;
+using Contracts.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Web.Api.Data;
-using Web.Api.Entities;
 
 namespace Web.Api.Controllers;
 

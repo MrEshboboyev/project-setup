@@ -1,4 +1,4 @@
-using Web.Api.Data.Seeders;
+using Contracts.Data.Seeders;
 
 namespace Web.Api.Data;
 
